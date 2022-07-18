@@ -7,13 +7,20 @@ import Tours from './Tours'
 // I SWITCHED TO PERMANENT DOMAIN
 const url = 'https://course-api.com/react-tours-project';
 function App() {
-const [info, setInfo] = useState()
+const [info, setInfo] = useState([])
 const [isLoading, setIsLoading] = useState(true)
 
 const getTours = async() => {
-  const {data} = await axios.get(url)
-  setInfo(data)
-  setIsLoading(false)
+  setIsLoading(true)
+  try {
+    const {data} = await axios.get(url)
+    setInfo(data)
+    setIsLoading(false)
+  } catch (error) {
+    setIsLoading(false)
+    console.log(error);  
+  }
+  
 }
 
 // const clearTour = (id) => {
@@ -29,10 +36,25 @@ getTours()
 
 
 // console.log(tour);
+if(isLoading){
+  return(
+    <main>
+<Loading/>
+    </main>
+  )
+}
 
+if(info.length === 0){
+  return(
+    <div className='title'>
+      <h2>no tours left</h2>
+      <button className='btn' onClick={()=>getTours()}>refresh</button>
+    </div>
+  )
+}
   return (
     <main>
-      {isLoading && <Loading/>}
+      {/* {isLoading && } */}
       <Tours info={info} setInfo={setInfo}/>
     </main>
   ) 
