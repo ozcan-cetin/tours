@@ -46,10 +46,12 @@ if(isLoading){
 
 if(info.length === 0){
   return(
-    <div className='title'>
+    <main>
+      <div className='title'>
       <h2>no tours left</h2>
       <button className='btn' onClick={()=>getTours()}>refresh</button>
     </div>
+    </main>
   )
 }
   return (
