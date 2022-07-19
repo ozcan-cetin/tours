@@ -6,5 +6,6 @@
 * Sending and receiving props
 * Creating a card using the map function
 * Write a function to remove the card I want
+* Optionally shorten and extend the description texts
 
 ![Preview](https://github.com/ozcan-cetin/tours/blob/master/Tours-min.gif)
